@@ -111,6 +111,33 @@
 
   ::selection{ background:var(--b); color:#fff; }
 
+  /* credits grid */
+  .credit-photo{
+    position:relative; aspect-ratio:1/1; overflow:hidden;
+    background:var(--panel-2);
+    box-shadow:0 0 0 1px var(--hair);
+  }
+  .credit-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter:grayscale(1) contrast(1.02) brightness(.92);
+    transform:scale(1.02);
+    transition:filter .5s ease, transform .6s cubic-bezier(.16,1,.3,1), box-shadow .5s ease;
+  }
+  .credit-photo::after{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    box-shadow: inset 0 0 0 1.5px transparent, 0 0 0 0 transparent;
+    transition:box-shadow .5s ease;
+  }
+  .credit-card:hover .credit-photo img{ filter:grayscale(0) contrast(1.02) brightness(1); transform:scale(1.06); }
+  .credit-card:hover .credit-photo::after{ box-shadow: inset 0 0 0 1.5px var(--tint), 0 18px 46px -14px var(--tint); }
+  .credit-letter{
+    display:flex; align-items:center; justify-content:center;
+    color:var(--dim); font-size:3rem; font-style:italic; font-weight:300;
+    transition:color .5s ease;
+  }
+  .credit-card:hover .credit-letter{ color:var(--tint); }
+  .credit-card p{ transition:color .4s ease; }
+
   @media (prefers-reduced-motion: reduce){
     .reveal{ transition:none; opacity:1; transform:none; }
     .beam, .photon, .eyelid.blink{ animation:none !important; }
@@ -383,6 +410,61 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDITS -->
+  <section id="credits" class="py-28 md:py-36 hairline">
+    <div class="container-x reveal">
+      <p class="dim mono text-xs mb-4">06</p>
+      <h2 class="text-4xl md:text-5xl font-normal leading-tight mb-4">Quem fez<br><span class="italic">esse trabalho</span></h2>
+      <p class="dim text-[17px] max-w-lg mb-14">Seis pessoas, três cores de luz. Passe o mouse — ou o dedo — em cada uma.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-14">
+
+        <div class="credit-card group">
+          <div class="credit-photo" style="--tint:var(--r)">
+            <img src="credits/raul.jpg" alt="Foto de Raul">
+          </div>
+          <p class="mt-4 font-medium">Raul</p>
+        </div>
+
+        <div class="credit-card group">
+          <div class="credit-photo" style="--tint:var(--g)">
+            <img src="credits/pedro.jpg" alt="Foto de Pedro">
+          </div>
+          <p class="mt-4 font-medium">Pedro</p>
+        </div>
+
+        <div class="credit-card group">
+          <div class="credit-photo" style="--tint:var(--b)">
+            <img src="credits/youssef.jpg" alt="Foto de Youssef">
+          </div>
+          <p class="mt-4 font-medium">Youssef</p>
+        </div>
+
+        <div class="credit-card group">
+          <div class="credit-photo" style="--tint:var(--r)">
+            <img src="credits/bruno.jpg" alt="Foto de Bruno">
+          </div>
+          <p class="mt-4 font-medium">Bruno</p>
+        </div>
+
+        <div class="credit-card group">
+          <div class="credit-photo credit-letter" style="--tint:var(--g)">
+            <span class="display italic">T</span>
+          </div>
+          <p class="mt-4 font-medium">Theo</p>
+        </div>
+
+        <div class="credit-card group">
+          <div class="credit-photo credit-letter" style="--tint:var(--b)">
+            <span class="display italic">M</span>
+          </div>
+          <p class="mt-4 font-medium">Miguel</p>
+        </div>
+
       </div>
     </div>
   </section>
